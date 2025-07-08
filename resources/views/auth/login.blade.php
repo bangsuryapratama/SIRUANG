@@ -69,7 +69,7 @@
     <div class="login-box">
         <!-- LEFT SIDE -->
         <div class="login-left d-flex flex-column justify-content-center align-items-center">
-            <img src="{{ asset('assets/img/bg.png') }}" alt="">
+            <img src="{{ asset('assets/backend/images/login/bg.png') }}" alt="">
         </div>
 
         <!-- RIGHT SIDE -->
