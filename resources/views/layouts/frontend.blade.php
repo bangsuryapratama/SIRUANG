@@ -28,13 +28,6 @@
   <!-- ------------------------------------- -->
   <!-- Top Bar Start -->
   <!-- ------------------------------------- -->
-  <div class="topbar-image bg-primary py-1 rounded-0 mb-0 alert alert-dismissible fade show" role="alert">
-    <div class="d-flex justify-content-center gap-sm-3 gap-2 align-items-center text-center flex-md-nowrap flex-wrap">
-      <span class="badge bg-white bg-opacity-10 fs-2 fw-bolder px-2">New</span>
-      <p class="mb-0 text-white fw-bold">Frontend Pages Included!</p>
-    </div>
-    <button type="button" class="btn-close btn-close-white p-2 fs-2" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
   <!-- ------------------------------------- -->
   <!-- Top Bar End -->
   <!-- ------------------------------------- -->
@@ -61,79 +54,37 @@
     <!-- ------------------------------------- -->
     <!-- banner Start -->
     <!-- ------------------------------------- -->
-    <Section class="bg-primary-subtle pt-7 py-lg-0 py-7">
-      <div class="custom-container">
-        <div class="row justify-content-center pt-lg-5 mb-4">
-          <div class="col-lg-8">
-            <h1 class="text-link-color fw-bolder text-center fs-13 mb-0 pt-lg-2">
-              Most powerful & <span class="text-primary">developer friendly</span> dashboard
-            </h1>
+    <section class="bg-primary-subtle py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Teks Kiri -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="fw-bold text-primary mb-3">
+          SIRUANG
+        </h2>
+        <h5 class="text-dark mb-3">
+          Sistem Penjadwalan Ruangan Kelas dan Laboratorium
+        </h5>
+        <p class="text-muted">
+          SIRUANG membantu sekolah dalam menjadwalkan pemakaian ruang kelas dan laboratorium secara efisien, mencegah bentrok jadwal, dan mempermudah administrasi melalui sistem digital yang modern.
+        </p>
+      </div>
+
+      <!-- Gambar Kanan -->
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <img src="{{ asset('assets/backend/img/KELAS.jpg') }}" alt="Ruangan 1" class="img-fluid rounded-3 shadow-sm">
           </div>
-        </div>
-        <div class="row align-items-end mb-3">
-          <div class="col-lg-3 d-none d-lg-block">
-            <img src="{{asset('assets/backend/images/frontend-pages/banner-top-left.svg')}}" class="ms-n2 w-100" alt="banner-top-left">
-          </div>
-          <div class="col-lg-6">
-            <div class="d-flex justify-content-center align-items-center gap-9">
-              <ul class="hstack mb-0">
-                <li class="ms-n8">
-                  <a href="javascript:void(0)" class="me-1">
-                    <img src="{{asset('assets/backend/images/profile/user-5.jpg')}}" class="rounded-circle border border-2 border-white" width="40" height="40" alt="modernize-img">
-                  </a>
-                </li>
-                <li class="ms-n8">
-                  <a href="javascript:void(0)" class="me-1">
-                    <img src="{{asset('assets/backend/images/profile/user-2.jpg')}}" class="rounded-circle border border-2 border-white" width="40" height="40" alt="modernize-img">
-                  </a>
-                </li>
-                <li class="ms-n8">
-                  <a href="javascript:void(0)" class="me-1">
-                    <img src="{{asset('assets/backend/images/profile/user-6.jpg')}}" class="rounded-circle border border-2 border-white" width="40" height="40" alt="modernize-img">
-                  </a>
-                </li>
-              </ul>
-              <p class="text-muted fs-5 mb-0 fw-bold">52,589+ developers & agencies using our templates
-              </p>
-            </div>
-            <div class="d-flex justify-content-center align-items-center gap-4 my-4 position-relative z-1">
-              <a href="../main/authentication-login.html" class="btn btn-primary">Log In</a>
-              <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)" class="text-dark fs-4 d-flex align-items-center gap-3 fw-bold">
-                <span class="fs-7 text-primary border border-2 rounded-circle p-6 d-flex align-items-center justify-content-center border-primary">
-                  <iconify-icon icon="bi:play-fill"></iconify-icon>
-                </span>
-                See how it works
-              </a>
-            </div>
-            <div class="d-flex justify-content-center align-items-center gap-9 position-relative z-1 pb-lg-13">
-              <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Bootstrap">
-                <img src="{{asset('assets/backend/images/frontend-pages/icon-bootstrap.svg')}}" width="28" height="28" alt="icon" />
-              </a>
-              <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Sass">
-                <img src="{{asset('assets/backend/images/frontend-pages/icon-sass.svg')}}" width="28" height="28" alt="icon" />
-              </a>
-              <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Gulp">
-                <img src="{{asset('assets/backend/images/frontend-pages/icon-gulp.svg')}}" width="28" height="28" alt="icon" />
-              </a>
-              <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Figma">
-                <img src="{{asset('assets/backend/images/frontend-pages/icon-figma.svg')}}" width="24" height="24" alt="icon" />
-              </a>
-              <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Apexchart">
-                <img src="{{asset('assets/backend/images/frontend-pages/icon-apexchart.svg')}}" width="24" height="24" alt="icon" />
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 d-none d-lg-block">
-            <img src="{{asset('assets/backend/images/frontend-pages/banner-top-right.svg')}}" class="me-n2 w-100" alt="banner-top-right">
-          </div>
-        </div>
-        <div class="row d-none d-lg-block">
-          <div class="col-12">
-            <img src="{{asset('assets/backend/images/frontend-pages/bottom-part.svg')}}" alt="screenshots" class="w-100">
+          <div class="col-6">
+            <img src="{{ asset('assets/backend/img/LAB.jpg') }}" alt="Ruangan 2" class="img-fluid rounded-3 shadow-sm">
           </div>
         </div>
       </div>
-    </Section>
+    </div>
+  </div>
+</section>
+
     <!-- ------------------------------------- -->
     <!-- banner End -->
     <!-- ------------------------------------- -->

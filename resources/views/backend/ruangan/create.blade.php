@@ -1,5 +1,4 @@
 @extends('layouts.backend')
-
 @section('content')
 <div class="container-fluid">
     <div class="card shadow-sm">
