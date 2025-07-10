@@ -18,4 +18,6 @@ class bookings extends Model
         return $this->belongsTo(ruangans::class, 'ruang_id');
     }
 
+    
+
 }

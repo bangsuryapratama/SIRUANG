@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string('jam_mulai');
             $table->string('jam_selesai');
-            $table->enum('status', ['Diterima', 'Ditolak', 'Pending']);
+            $table->enum('status', ['Diterima', 'Ditolak', 'Pending', 'Selesai']);
             $table->timestamps();
         });
     }

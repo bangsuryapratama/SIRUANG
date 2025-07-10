@@ -5,9 +5,7 @@
         <!-- ---------------------------------- -->
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="./main/index.html" class="text-nowrap logo-img">
-                <img src="{{asset('assets/backend/images/logos/dark-logo.svg')}}" class="dark-logo" alt="Logo-Dark" />
-                <img src="{{asset('assets/backend/images/logos/light-logo.svg')}}" class="light-logo"
-                    alt="Logo-light" />
+                <img src="{{asset('assets/backend/img/logo.png')}}" class="dark-logo" alt="Logo-Dark" height="78" />
             </a>
             <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
                 <i class="ti ti-x"></i>
@@ -27,7 +25,7 @@
                 <!-- Dashboard -->
                 <!-- ---------------------------------- -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ url('admin') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-aperture"></i>
                         </span>
@@ -63,7 +61,7 @@
                     </a>
                 </li>
                   <li class="sidebar-item">       
-                    <a class="sidebar-link" href="" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('backend.bookings.index') }}" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="m21.706 5.291l-2.999-2.998A1 1 0 0 0 18 2H6a1 1 0 0 0-.707.293L2.294 5.291A1 1 0 0 0 2 5.999V19c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5.999a1 1 0 0 0-.294-.708M6.414 4h11.172l.999.999H5.415zM4 19V6.999h16L20.002 19z" />
