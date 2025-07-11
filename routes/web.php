@@ -35,6 +35,8 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 
     Route::resource('/ruangan', RuanganController::class);
     Route::resource('/jadwal', JadwalController::class);
     Route::resource('/bookings', BookingController::class);
+    Route::get('bookings-export', [BookingController::class, 'export'])->name('bookings.export');
+
     
 });
 

@@ -18,14 +18,14 @@ class BookingController extends Controller
     }
 
 
-    //  public function export()
-    // {
+     public function export()
+    {
         
-    // $bookings = bookings::all();
+    $bookings = bookings::all();
 
-    // $pdf = Pdf::loadView('booking.databooking_pdf', ['bookings' => $bookings]);
-    // return $pdf->download('laporan-data-bookings.pdf');
-    // }
+    $pdf = Pdf::loadView('backend.bookings.pdfbookings', ['bookings' => $bookings]);
+    return $pdf->download('laporan-data-bookings.pdf');
+    }
 
     public function index(Request $request)
     {

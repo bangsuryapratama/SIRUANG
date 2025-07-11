@@ -9,9 +9,15 @@
     <div class="card shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="mb-0">Booking</h4>
-            <a href="{{ route('backend.bookings.create') }}" class="btn btn-sm btn-outline-success">Tambah Booking</a>
+            <div>
+            <a href="{{ route('backend.bookings.export') }}" class="btn btn-sm btn-danger me-2">
+                <i class="fa fa-file-pdf"></i> Export PDF
+            </a>
+            <a href="{{ route('backend.bookings.create') }}" class="btn btn-sm btn-outline-success">
+                Tambah Booking
+            </a>
+            </div>
         </div>
-
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped" id="bookingTable">
