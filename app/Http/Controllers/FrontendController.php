@@ -6,6 +6,7 @@ use App\Models\Bookings;
 use App\Models\Jadwals;
 use App\Models\ruangans;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class FrontendController extends Controller
 {
@@ -68,4 +69,13 @@ class FrontendController extends Controller
         $ruangan = ruangans::findOrFail($id);
         return view('ruangan_detail', compact('ruangan'));
     }
+
+    public function export()
+    {
+    $bookings = Bookings::where('user_id', Auth::id())->with('ruangan')->get();
+
+    $pdf = Pdf::loadView('riwayat_pdf', ['bookings' => $bookings]);
+    return $pdf->download('riwayat-booking-' . Auth::user()->name . '.pdf');
+    }
+
 }

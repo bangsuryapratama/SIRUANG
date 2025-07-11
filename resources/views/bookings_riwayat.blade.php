@@ -5,6 +5,12 @@
     <h2 class="mb-4 fw-bold text-center">Riwayat Booking Anda</h2>
 
     @if($booking->count())
+        <div class="mb-3 text-end">
+            <a href="{{ route('bookings.export') }}" class="btn btn-sm btn-danger">
+                <i class="fa fa-file-pdf"></i> Export PDF
+            </a>
+        </div>
+
         <div class="table-responsive shadow-sm rounded">
             <table class="table table-hover align-middle text-center">
                 <thead class="table-primary">

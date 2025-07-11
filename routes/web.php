@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/booking/create', [UserBookingController::class, 'create'])->name('bookings.create');
     Route::post('/booking', [UserBookingController::class, 'store'])->name('bookings.store');
     Route::get('/booking/riwayat', [FrontendController::class, 'riwayat'])->name('bookings.riwayat');
+    Route::get('bookings-export', [FrontendController::class, 'export'])->name('bookings.export');
 });
 
 Route::get('/ruangan', [FrontendController::class, 'ruanganIndex'])->name('ruangan');

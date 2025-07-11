@@ -70,40 +70,7 @@
           </div>
           <!-- end count -->
 
-          <!--  Row 1 -->
-          <div class="row">
-            <div class="col-lg-12 d-flex align-items-stretch">
-              <div class="card w-100 shadow">
-                <div class="card-body">
-                  <div class="d-sm-flex d-block align-items-center justify-content-between mb-7">
-                    <div class="mb-3 mb-sm-0">
-                      <h4 class="card-title fw-semibold">Booking</h4>
-                      <p class="card-subtitle">Status Booking</p>
-                    </div>
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table align-middle text-nowrap mb-0">
-                      <thead>
-                        <tr class="text-muted fw-semibold">
-                          <th scope="col">Nama</th>
-                          <th scope="col">Ruangan</th>
-                          <th scope="col">Tanggal</th>
-                          <th scope="col">Jam Mulai</th>
-                          <th scope="col">Jam Selesai</th>
-                          <th scope="col">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody class="border-top">
-                        <!-- isi table -->
-                         
-                        <!-- end isi table -->
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        
         </div>
 
 @endsection
