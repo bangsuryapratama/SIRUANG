@@ -8,6 +8,7 @@ use App\Models\ruangans;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BookingController extends Controller
 {
@@ -16,8 +17,19 @@ class BookingController extends Controller
         $this->middleware('auth');
     }
 
+
+    //  public function export()
+    // {
+        
+    // $bookings = bookings::all();
+
+    // $pdf = Pdf::loadView('booking.databooking_pdf', ['bookings' => $bookings]);
+    // return $pdf->download('laporan-data-bookings.pdf');
+    // }
+
     public function index(Request $request)
     {
+        //status otomatis
         bookings::where(function ($query) {
             $query->where('tanggal', '<', now()->toDateString())
                   ->orWhere(function ($q) {
@@ -28,6 +40,7 @@ class BookingController extends Controller
         ->where('status', '!=', 'Selesai')
         ->update(['status' => 'Selesai']);
 
+        //bentrok
         $bookings = bookings::with(['ruangan', 'user'])
             ->latest()
             ->get()

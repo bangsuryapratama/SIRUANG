@@ -78,6 +78,9 @@
   <script src="{{asset('assets/backend/libs/owl.carousel/dist/owl.carousel.min.js')}}"></script>
   <script src="{{asset('assets/backend/js/frontend-landingpage/homepage.js')}}"></script>
    @include('sweetalert::alert')
+   @stack('styles')
+@stack('scripts')
+
 </body>
 
 </html>

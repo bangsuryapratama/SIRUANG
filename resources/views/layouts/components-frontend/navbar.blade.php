@@ -21,7 +21,7 @@
            <a class="nav-link fs-5 fw-semibold text-dark" href="{{ route('bookings.create') }}">Booking</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fs-5 fw-semibold text-dark" href="">Ruangan</a>
+            <a class="nav-link fs-5 fw-semibold text-dark" href="{{ route('ruangan') }}">Ruangan</a>
           </li>
           @auth
           <li class="nav-item">

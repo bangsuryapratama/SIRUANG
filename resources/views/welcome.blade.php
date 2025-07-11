@@ -14,7 +14,7 @@
           <a href="{{ route('bookings.create') }}" class="btn btn-outline-primary px-4 py-2 rounded-pill">Booking Sekarang</a>
         </div>
         <div class="col-lg-6 text-center">
-          <img src="{{ asset('assets/backend/img/KELAS.jpg') }}" alt="Ilustrasi Ruangan" class="img-fluid rounded shadow-sm" style="max-height: 300px;">
+          <img src="{{ asset('assets/backend/img/LAB.jpg') }}" alt="Ilustrasi Ruangan" height="300" class="img-fluid rounded-3">
         </div>
       </div>
     </div>

@@ -29,13 +29,13 @@
                                         <span class="badge bg-warning text-dark">Menunggu</span>
                                         @break
                                     @case('Disetujui')
-                                        <span class="badge bg-success">Disetujui</span>
+                                        <span class="badge bg-primary">Disetujui</span>
                                         @break
                                     @case('Ditolak')
                                         <span class="badge bg-danger">Ditolak</span>
                                         @break
                                     @case('Selesai')
-                                        <span class="badge bg-danger">Selesai</span>
+                                        <span class="badge bg-success">Selesai</span>
                                         @break
                                     @default
                                         <span class="badge bg-secondary">Tidak Diketahui</span>

@@ -43,6 +43,10 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 
 Route::middleware(['auth'])->group(function () {
     Route::get('/booking/create', [UserBookingController::class, 'create'])->name('bookings.create');
     Route::post('/booking', [UserBookingController::class, 'store'])->name('bookings.store');
-    Route::get('/booking/riwayat', [UserBookingController::class, 'riwayat'])->name('bookings.riwayat');
+    Route::get('/booking/riwayat', [FrontendController::class, 'riwayat'])->name('bookings.riwayat');
 });
+
+Route::get('/ruangan', [FrontendController::class, 'ruanganIndex'])->name('ruangan');
+Route::get('/ruangan/{id}', [FrontendController::class, 'ruanganShow'])->name('ruangan.detail');
+
 

@@ -19,6 +19,7 @@ class RuanganController extends Controller
         confirmDelete($title, $text);
 
         return view('backend.ruangan.index', compact('ruangans'));
+        
     }
 
     public function create()

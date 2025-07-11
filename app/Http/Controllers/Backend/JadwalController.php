@@ -36,7 +36,7 @@ class JadwalController extends Controller
             'tanggal'        => 'required|date|',
             'jam_mulai'      => 'required|string',
             'jam_selesai'    => 'required|',
-            'ket'     => 'required|string',
+            'ket'            => 'required|string',
         ]);
 
         
@@ -93,6 +93,15 @@ public function update(Request $request, $id)
     toast('Jadwal berhasil diperbarui.', 'success');
     return redirect()->route('backend.jadwal.index');
 }
+
+    public function destroy(string $id)
+    {
+        $jadwal = jadwals::findOrFail($id);
+        $jadwal->delete();
+
+        toast('Data jadwal berhasil dihapus.', 'success');
+        return redirect()->route('backend.jadwal.index');
+    }
 
 
 
