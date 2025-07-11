@@ -29,10 +29,10 @@
                     <input type="password" name="password_confirmation" class="form-control" required>
                 </div>
 
-                {{-- <div class="form-check form-switch mb-3">
+                <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" name="is_admin" id="is_admin">
                     <label class="form-check-label" for="is_admin">Admin</label>
-                </div> --}}
+                </div>
 
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('backend.user.index') }}" class="btn btn-secondary me-2">Cancel</a>

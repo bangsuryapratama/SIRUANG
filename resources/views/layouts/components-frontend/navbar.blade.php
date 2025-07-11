@@ -25,7 +25,7 @@
           </li>
           @auth
           <li class="nav-item">
-            <a class="nav-link fs-5 fw-semibold text-dark" href="">Riwayat</a>
+           <a class="nav-link fs-5 fw-semibold text-dark" href="{{ route('bookings.riwayat') }}">Riwayat</a>
           </li>
           @endauth
         </ul>
@@ -59,9 +59,9 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
+                      </ul>
+              </div>
+            </div>
+          </div>
+     </nav>
 </header>

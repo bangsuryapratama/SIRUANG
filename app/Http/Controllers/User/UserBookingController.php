@@ -54,4 +54,15 @@ class UserBookingController extends Controller
         toast('Booking sudah diajukan', 'success');
         return redirect()->route('bookings.create');
     }
+
+
+    public function riwayat()
+    {
+        $booking = bookings::where('user_id', auth::id())->get();
+        // dd($booking);
+        return view('bookings_riwayat', compact('booking'));
+    }
+
+
+    
 }

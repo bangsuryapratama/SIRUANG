@@ -57,6 +57,24 @@ class BookingController extends Controller
             'jam_selesai' => 'required|after:jam_mulai',
         ]);
 
+
+        $cekBentrok = bookings::where('ruang_id', $request->ruang_id)
+            ->where('tanggal', $request->tanggal)
+            ->where(function ($query) use ($request) {
+                $query->whereBetween('jam_mulai', [$request->jam_mulai, $request->jam_selesai])
+                    ->orWhereBetween('jam_selesai', [$request->jam_mulai, $request->jam_selesai])
+                    ->orWhere(function ($q) use ($request) {
+                        $q->where('jam_mulai', '<=', $request->jam_mulai)
+                          ->where('jam_selesai', '>=', $request->jam_selesai);
+                    });
+            })
+            ->exists();
+
+        if ($cekBentrok) {
+            toast('Booking gagal jadwal bentrok !', 'error');
+            return back()->with('error', 'Jadwal bentrok dengan jadwal lain!');
+        }
+
         $booking = new bookings;
         $booking->user_id     = $request->user_id;
         $booking->ruang_id    = $request->ruang_id;
