@@ -59,6 +59,7 @@
         </div>
       </div>
     </div>
+     @include('sweetalert::alert')
     <script>
       function handleColorTheme(e) {
         document.documentElement.setAttribute("data-color-theme", e);

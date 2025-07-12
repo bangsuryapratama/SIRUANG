@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\bookings;
+use App\Models\jadwals;
 use App\Models\ruangans;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class UserBookingController extends Controller
 {
     public function create()
     {
-        $ruangans = ruangans::all();
+       
+        $ruangans = ruangans::orderBy('id', 'asc')->get();
         return view('booking_create', compact('ruangans'));
     }
 
@@ -38,7 +40,24 @@ class UserBookingController extends Controller
             }
         }
 
-        //fungsibentrokk
+        // Cek bentrok dengan jadwal tetap (Jadwal model)
+        $tanggal = Carbon::parse($request->tanggal);
+        $hariBooking = $tanggal->locale('id')->isoFormat('dddd'); // contoh: "Senin"
+
+        $jadwalTetaps = jadwals::where('ruang_id', $request->ruang_id)->get();
+
+        foreach ($jadwalTetaps as $jadwal) {
+            $hariJadwal = Carbon::parse($jadwal->tanggal)->locale('id')->isoFormat('dddd');
+
+            if ($hariJadwal === $hariBooking) {
+                if (($request->jam_mulai >= $jadwal->jam_mulai && $request->jam_mulai < $jadwal->jam_selesai) || ($request->jam_selesai > $jadwal->jam_mulai && $request->jam_selesai <= $jadwal->jam_selesai) || ($request->jam_mulai <= $jadwal->jam_mulai && $request->jam_selesai >= $jadwal->jam_selesai)) {
+                    toast('Jadwal bentrok dengan jadwal tetap ruangan.', 'error')->autoClose(4000);
+                    return back()->withInput();
+                }
+            }
+        }
+
+        //fungsibentrokbooking
         $cekBentrok = bookings::where('ruang_id', $request->ruang_id)
             ->where('tanggal', $request->tanggal)
             ->where(function ($query) use ($request) {
@@ -68,8 +87,8 @@ class UserBookingController extends Controller
             $newStart = Carbon::parse($request->tanggal . ' ' . $request->jam_mulai);
 
             if ($lastEnd->gt($newStart->subMinutes(30))) {
-                toast('Harus ada jeda minimal 30 menit setelah pemakaian sebelumnya!', 'error');
-                return back()->withInput()->with('error', 'Harus ada jeda minimal 30 menit setelah pemakaian sebelumnya!');
+                toast('Harus ada jeda 30 menit setelah pemakaian sebelumnya!', 'error');
+                return back()->withInput()->with('error', 'Harus ada jeda 30 menit setelah pemakaian sebelumnya!');
             }
         }
 

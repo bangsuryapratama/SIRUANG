@@ -29,7 +29,7 @@
                                 <div class="me-3">
                                     <div class="bg-light rounded-3 p-3 text-center">
                                         <div class="text-muted small">Kapasitas</div>
-                                        <div class="fw-bold">{{ $ruangan->kapasitas }}</div>
+                                        <div class="fw-bold">{{ $ruangan->kapasitas }} Orang</div>
                                     </div>
                                 </div>
                             </div>

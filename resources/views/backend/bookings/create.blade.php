@@ -35,13 +35,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="jam_mulai" class="form-label">Jam Mulai</label>
-                    <input type="time" name="jam_mulai" class="form-control">
+                    <label>Jam Mulai</label>
+                    <input type="time" name="jam_mulai" id="jam_mulai" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="jam_selesai" class="form-label">Jam Selesai</label>
-                    <input type="time" name="jam_selesai" class="form-control">
+                    <label>Jam Selesai</label>
+                    <input type="time" name="jam_selesai" id="jam_selesai" class="form-control" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Simpan</button>

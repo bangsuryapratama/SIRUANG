@@ -2,101 +2,78 @@
 
 @section('content')
 <div class="container py-5">
-    <h2 class="mb-4">Form Booking Ruangan</h2>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-5">
+                    <h3 class="text-center text-primary fw-bold mb-4">
+                        <i class="bi bi-calendar-check-fill me-2"></i>Booking Ruangan
+                    </h3>
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    <form action="{{ route('bookings.store') }}" method="POST" novalidate>
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
-    @if (session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Pilih Ruangan</label>
+                            <select name="ruang_id" class="form-select @error('ruang_id') is-invalid @enderror" required>
+                                <option value="">-- Pilih Ruangan --</option>
+                                @foreach ($ruangans as $ruangan)
+                                    <option value="{{ $ruangan->id }}" {{ old('ruang_id') == $ruangan->id ? 'selected' : '' }}>
+                                        {{ $ruangan->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('ruang_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-    <form action="{{ route('bookings.store') }}" method="POST">
-        @csrf
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Tanggal</label>
+                            <input type="date" name="tanggal" id="tanggal"
+                                class="form-control @error('tanggal') is-invalid @enderror"
+                                value="{{ old('tanggal') }}" required>
+                            @error('tanggal')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Jam Mulai</label>
+                                <input type="time" name="jam_mulai" id="jam_mulai"
+                                    class="form-control @error('jam_mulai') is-invalid @enderror"
+                                    value="{{ old('jam_mulai') }}" required>
+                                @error('jam_mulai')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Jam Selesai</label>
+                                <input type="time" name="jam_selesai" id="jam_selesai"
+                                    class="form-control @error('jam_selesai') is-invalid @enderror"
+                                    value="{{ old('jam_selesai') }}" required>
+                                @error('jam_selesai')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-        <div class="mb-3">
-            <label>Ruangan</label>
-            <select name="ruang_id" class="form-select" required>
-                <option value="">-- Pilih Ruangan --</option>
-                @foreach ($ruangans as $ruangan)
-                    <option value="{{ $ruangan->id }}">{{ $ruangan->nama }}</option>
-                @endforeach
-            </select>
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+                                <i class="bi bi-send-check me-2"></i> Ajukan Booking
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div class="mb-3">
-            <label>Tanggal</label>
-            <input type="date" name="tanggal" id="tanggal" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label>Jam Mulai</label>
-            <input type="time" name="jam_mulai" id="jam_mulai" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label>Jam Selesai</label>
-            <input type="time" name="jam_selesai" id="jam_selesai" class="form-control" required>
-        </div>
-
-        <button class="btn btn-primary" type="submit">Ajukan Booking</button>
-    </form>
+    </div>
 </div>
 @endsection
-
-@push('styles')
-<style>
-    .is-invalid {
-        border-color: red;
-    }
-</style>
-@endpush
-
-@push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const tanggalInput = document.getElementById('tanggal');
-        const jamMulaiInput = document.getElementById('jam_mulai');
-        const jamSelesaiInput = document.getElementById('jam_selesai');
-
-        function pad(n) {
-            return n < 10 ? '0' + n : n;
-        }
-
-        function getCurrentTime() {
-            const now = new Date();
-            return pad(now.getHours()) + ':' + pad(now.getMinutes());
-        }
-
-        tanggalInput.addEventListener('change', function () {
-            const selectedDate = new Date(this.value);
-            const today = new Date();
-
-            // Reset
-            jamMulaiInput.classList.remove('is-invalid');
-            jamSelesaiInput.classList.remove('is-invalid');
-
-            if (selectedDate.toDateString() === today.toDateString()) {
-                const currentTime = getCurrentTime();
-
-                // Set batas minimal
-                jamMulaiInput.setAttribute('min', currentTime);
-                jamSelesaiInput.setAttribute('min', currentTime);
-
-                jamMulaiInput.addEventListener('input', () => {
-                    jamMulaiInput.classList.toggle('is-invalid', jamMulaiInput.value < currentTime);
-                });
-
-                jamSelesaiInput.addEventListener('input', () => {
-                    jamSelesaiInput.classList.toggle('is-invalid', jamSelesaiInput.value < currentTime);
-                });
-
-            } else {
-                jamMulaiInput.removeAttribute('min');
-                jamSelesaiInput.removeAttribute('min');
-                jamMulaiInput.classList.remove('is-invalid');
-                jamSelesaiInput.classList.remove('is-invalid');
-            }
-        });
-    });
-</script>
-@endpush

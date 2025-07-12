@@ -1,105 +1,47 @@
-  <footer>
-    <div class="container-fluid">
-      <div class="border-bottom">
-        <div class="row mb-sm-12 mb-4">
-          <div class="col-md-3 col-6">
-            <h3 class="fs-4 fw-semibold mb-7">Applications</h3>
-            <ul class="d-flex flex-column gap-9">
-              <li>
-                <a href="../main/app-kanban.html" class="fs-4 text-body link-primary">Kanban</a>
-              </li>
-              <li>
-                <a href="../main/app-invoice.html" class="fs-4 text-body link-primary">Invoice
-                  List</a>
-              </li>
-              <li>
-                <a href="../main/eco-shop.html" class="fs-4 text-body link-primary">eCommerce</a>
-              </li>
-              <li>
-                <a href="../main/app-chat.html" class="fs-4 text-body link-primary">Chat</a>
-              </li>
-              <li>
-                <a href="../main/app-calendar.html" class="fs-4 text-body link-primary">Calendar</a>
-              </li>
-              <li>
-                <a href="../main/blog-posts.html" class="fs-4 text-body link-primary">Blog</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-3 col-6">
-            <h3 class="fs-4 fw-semibold mb-7">Forms</h3>
-            <ul class="d-flex flex-column gap-9">
-              <li>
-                <a href="../main/form-basic.html" class="fs-4 text-body link-primary">Form
-                  Basic</a>
-              </li>
-              <li>
-                <a href="../main/form-horizontal.html" class="fs-4 text-body link-primary">Form
-                  Horizontal</a>
-              </li>
-              <li>
-                <a href="../main/form-wizard.html" class="fs-4 text-body link-primary">Form
-                  Wizard</a>
-              </li>
-              <li>
-                <a href="../main/form-bootstrap-validation.html" class="fs-4 text-body link-primary">Form Validation
-                </a>
-              </li>
-              <li>
-                <a href="../main/form-editor-quill.html" class="fs-4 text-body link-primary">Quill Editor</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-3 col-6">
-            <h3 class="fs-4 fw-semibold mb-7">Tables</h3>
-            <ul class="d-flex flex-column gap-9">
-              <li>
-                <a href="../main/table-basic.html" class="fs-4 text-body link-primary">Basic
-                  Table</a>
-              </li>
-              <li>
-                <a href="../main/table-dark-basic.html" class="fs-4 text-body link-primary">Table
-                  Dark Basic</a>
-              </li>
-              <li>
-                <a href="../main/table-sizing.html" class="fs-4 text-body link-primary">Table
-                  Sizing</a>
-              </li>
-              <li>
-                <a href="../main/table-layout-coloured.html" class="fs-4 text-body link-primary">Coloured Table</a>
-              </li>
-              <li>
-                <a href="../main/table-datatable-basic.html" class="fs-4 text-body link-primary">Basic Initialisation</a>
-              </li>
-              <li>
-                <a href="../main/table-datatable-api.html" class="fs-4 text-body link-primary">API</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-3 col-6">
-            <h3 class="fs-4 fw-semibold mb-7">Follow us</h3>
-            <div class="d-flex gap-9">
-              <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Facebook">
-                <img src="{{asset('assets/backend/images/frontend-pages/icon-facebook.svg')}}" alt="facebook">
-              </a>
-              <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Twitter">
-                <img src="{{asset('assets/backend/images/frontend-pages/icon-twitter.svg')}}" alt="twitter">
-              </a>
-              <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Instagram">
-                <img src="{{asset('assets/backend/images/frontend-pages/icon-instagram.svg')}}" alt="instagram">
-              </a>
-            </div>
-          </div>
-        </div>
+<footer class=" bg-dark text-light text-white mt-5 pt-5 pb-3">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <h5 class="fw-bold mb-3  text-white">Tentang SIRUANG</h5>
+        <p class="text-muted  text-white">
+          SIRUANG adalah sistem penjadwalan ruangan kelas dan laboratorium secara digital. Didesain agar bebas bentrok dan efisien digunakan oleh seluruh civitas akademika.
+        </p>
       </div>
-      <div class="d-flex justify-content-between py-7 flex-md-nowrap flex-wrap gap-sm-0 gap-3">
-        <div class="d-flex gap-3 align-items-center">
-          <img src="{{asset('assets/backend/images/logos/favicon.png')}}" alt="icon">
-          <p class="fs-4 mb-0">All rights reserved by Modernize. </p>
-        </div>
-        <div>
-          <p class="mb-0">Produced by <a target="_blank" href="https://adminmart.com/" class="text-primary link-primary">AdminMart</a>.</p>
+
+      <div class="col-md-4">
+        <h5 class="fw-bold mb-3  text-white">Navigasi</h5>
+        <ul class="list-unstyled text-muted">
+          <li><a href="{{ route('bookings.create') }}" class="text-white text-decoration-none">Booking Ruangan</a></li>
+          <li><a href="{{ route('ruangan') }}" class="text-white text-decoration-none">Daftar Ruangan</a></li>
+          <li><a href="{{ route('login') }}" class="text-white text-decoration-none">Login Admin</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h5 class="fw-bold mb-3  text-white">Ikuti Kami</h5>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-white fs-5" data-bs-toggle="tooltip" data-bs-title="Facebook">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="#" class="text-white fs-5" data-bs-toggle="tooltip" data-bs-title="Twitter">
+            <i class="bi bi-twitter"></i>
+          </a>
+          <a href="#" class="text-white fs-5" data-bs-toggle="tooltip" data-bs-title="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
         </div>
       </div>
     </div>
-  </footer>
+
+    <hr class="border-light">
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-muted">
+      <div>
+        <small>&copy; {{ date('Y') }} SIRUANG. All rights reserved.</small>
+      </div>
+      <div>
+        <small>Dibuat Oleh Surya Pratama and TEAM</small>
+      </div>
+    </div>
+  </div>
+</footer>
