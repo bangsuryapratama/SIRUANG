@@ -24,7 +24,8 @@
                             <select name="ruang_id" class="form-select @error('ruang_id') is-invalid @enderror" required>
                                 <option value="">-- Pilih Ruangan --</option>
                                 @foreach ($ruangans as $ruangan)
-                                    <option value="{{ $ruangan->id }}" {{ old('ruang_id') == $ruangan->id ? 'selected' : '' }}>
+                                   <option value="{{ $ruangan->id }}"
+                                        {{ request('ruangan_id') == $ruangan->id || old('ruang_id') == $ruangan->id ? 'selected' : '' }}>
                                         {{ $ruangan->nama }}
                                     </option>
                                 @endforeach

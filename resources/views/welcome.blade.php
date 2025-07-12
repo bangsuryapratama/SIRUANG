@@ -80,7 +80,6 @@
   });
 </script>
 
-{{-- Style --}}
 <style>
   .btn-primary {
     transition: all 0.3s ease-in-out;

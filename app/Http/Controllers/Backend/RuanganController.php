@@ -22,10 +22,12 @@ class RuanganController extends Controller
         
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('backend.ruangan.create');
+    $ruangans = ruangans::orderBy('nama')->get();
+    return view('booking_create', compact('ruangans'));
     }
+
 
     public function store(Request $request)
     {

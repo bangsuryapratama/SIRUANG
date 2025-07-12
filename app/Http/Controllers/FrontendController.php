@@ -60,7 +60,8 @@ class FrontendController extends Controller
 
     public function ruanganIndex()
     {
-       $ruangans = ruangans::latest()->get();
+      $ruangans = ruangans::orderBy('id', 'asc')->get();
+
 
         $title = 'Hapus Data!';
         $text  = "Apakah anda yakin ingin menghapus ruangan ini?";

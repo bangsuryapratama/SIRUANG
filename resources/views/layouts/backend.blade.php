@@ -18,6 +18,12 @@
   <link rel="stylesheet" href="{{ asset('assets/backend/libs/owl.carousel/dist/assets/owl.carousel.min.css')}}" />
 </head>
 
+<style>
+  body{
+    background-color: #f8f9fa;
+  }
+</style>
+
 <body>
  
   <!-- Preloader -->
