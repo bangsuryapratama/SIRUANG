@@ -13,6 +13,10 @@
   <!-- Core Css -->
   <link rel="stylesheet" href="{{asset('assets/backend/css/styles.css')}}" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- BOOTSTRAP 5 CSS & JS BUNDLED -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
 
 
   <title>SIRUANG</title>
@@ -71,6 +75,9 @@
   </a>
 
   <script src="{{asset('assets/backend/js/vendor.min.js')}}"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Import Js Files -->
   <script src="{{asset('assets/backend/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('assets/backend/libs/simplebar/dist/simplebar.min.js')}}"></script>
