@@ -25,7 +25,7 @@ class RuanganController extends Controller
     public function create(Request $request)
     {
     $ruangans = ruangans::orderBy('nama')->get();
-    return view('booking_create', compact('ruangans'));
+    return view('backend.ruangan.create', compact('ruangans'));
     }
 
 

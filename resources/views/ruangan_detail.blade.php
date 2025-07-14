@@ -4,12 +4,13 @@
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-lg-10">
-      <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+      <div class="card border-0 shadow-lg rounded-5 overflow-hidden">
         <div class="row g-0">
-          <div class="col-md-6">
+          <!-- Image Section -->
+          <div class="col-md-6 bg-dark-subtle">
             @if($ruangan->cover)
               <img src="{{ asset('storage/'.$ruangan->cover) }}" alt="Foto {{ $ruangan->nama }}"
-                   class="w-100 h-100 object-fit-cover" style="min-height: 100%;">
+                   class="w-100 h-100 object-fit-cover" style="min-height: 100%; max-height: 100%;">
             @else
               <div class="w-100 h-100 bg-light d-flex align-items-center justify-content-center" style="min-height: 100%;">
                 <div class="text-center text-muted">
@@ -20,9 +21,10 @@
             @endif
           </div>
 
+          <!-- Detail Section -->
           <div class="col-md-6 d-flex align-items-center">
             <div class="card-body p-5">
-              <h2 class="fw-bold text-dark mb-3">{{ $ruangan->nama }}</h2>
+              <h2 class="fw-bold text-gradient mb-3">{{ $ruangan->nama }}</h2>
               <p class="text-muted mb-4"><i class="bi bi-people-fill me-2"></i> Kapasitas: <strong>{{ $ruangan->kapasitas }}</strong> orang</p>
 
               <h5 class="text-secondary mb-3">Fasilitas:</h5>
@@ -35,10 +37,10 @@
                 @endforeach
               </ul>
 
-             <a href="{{ route('bookings.create', ['ruangan_id' => $ruangan->id]) }}" 
-                class="btn btn-primary btn-lg w-100 rounded-pill shadow-sm">
+              <a href="{{ route('bookings.create', ['ruangan_id' => $ruangan->id]) }}"
+                 class="btn btn-gradient btn-lg w-100 rounded-pill shadow-sm">
                 <i class="bi bi-calendar-plus me-2"></i> Booking Sekarang
-            </a>
+              </a>
             </div>
           </div>
         </div>
@@ -53,6 +55,24 @@
   .object-fit-cover {
     object-fit: cover;
     height: 100%;
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, #1b263b, #778da9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .btn-gradient {
+    background: linear-gradient(to right, #1b263b, #778da9);
+    color: white;
+    border: none;
+    transition: 0.3s ease-in-out;
+  }
+
+  .btn-gradient:hover {
+    background: linear-gradient(to right, #0d1b2a, #5c748f);
+    transform: translateY(-2px);
   }
 </style>
 @endpush

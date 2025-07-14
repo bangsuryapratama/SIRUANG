@@ -27,7 +27,8 @@ class FrontendController extends Controller
         'start' => $booking->tanggal . 'T' . $booking->jam_mulai,
         'end'   => $booking->tanggal . 'T' . $booking->jam_selesai,
         'color' => '#f39c12',
-        'description' => 'Nama: ' . $booking->user->name . "\nStatus: " . $booking->status,
+        'description' => 'Nama: ' . $booking->user->name . '<br> Status: ' . $booking->status,
+
     ];
 
 
@@ -39,6 +40,8 @@ class FrontendController extends Controller
             'start' => $jadwal->tanggal . 'T' . $jadwal->jam_mulai,
             'end'   => $jadwal->tanggal . 'T' . $jadwal->jam_selesai,
             'color' => '#3498db',
+            'description' => 'Keterangan: ' . $jadwal->ket,
+
         ];
     }
 

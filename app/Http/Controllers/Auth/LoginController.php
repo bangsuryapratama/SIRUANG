@@ -43,10 +43,23 @@ class LoginController extends Controller
         ->withInput($request->only('email'));
     }
 
+   // di LoginController.php
+
     protected function authenticated(Request $request, $user)
     {
-    toast('Login berhasil!', 'success')->autoclose(4000);
+    toast('Login berhasil!', 'success');
+
+    $recent = \App\Models\bookings::where('user_id', $user->id)
+        ->whereIn('status', ['Diterima', 'Ditolak'])
+        ->where('is_read', false)
+        ->latest()
+        ->first();
+
+    if ($recent) {
+        toast("📢 Booking {$recent->ruangan->nama} baru saja {$recent->status}!", 
+              $recent->status === 'Diterima' ? 'success' : 'error');
     }
+   }
 
     public function logout(Request $request)
     {
@@ -59,6 +72,7 @@ class LoginController extends Controller
 
     return redirect('/');
     }
+
 
     /**
      * Create a new controller instance.

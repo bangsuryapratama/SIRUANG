@@ -27,14 +27,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', Admin::class]], function () {
     Route::get('/', [BackendController::class, 'index']);
-    
-  
-
     // // crud resource
-    Route::resource('/user', UserController::class);
-    Route::resource('/ruangan', RuanganController::class);
-    Route::resource('/jadwal', JadwalController::class);
-    Route::resource('/bookings', BookingController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('ruangan', RuanganController::class);
+    Route::resource('jadwal', JadwalController::class);
+    Route::resource('bookings', BookingController::class);
     Route::get('bookings-export', [BookingController::class, 'export'])->name('bookings.export');
 
     
@@ -53,3 +50,12 @@ Route::get('/ruangan', [FrontendController::class, 'ruanganIndex'])->name('ruang
 Route::get('/ruangan/{id}', [FrontendController::class, 'ruanganShow'])->name('ruangan.detail');
 
 
+
+Route::post('/notifications/read', function () {
+    \App\Models\bookings::where('user_id', auth::id())
+        ->whereIn('status', ['Diterima', 'Ditolak'])
+        ->where('is_read', false)
+        ->update(['is_read' => true]);
+
+    return response()->json(['success' => true]);
+})->middleware('auth');
