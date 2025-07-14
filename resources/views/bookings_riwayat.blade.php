@@ -6,13 +6,44 @@
         <i class="bi bi-clock-history me-2"></i>Riwayat Booking Anda
     </h2>
 
-    @if($booking->count())
-        <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('bookings.export') }}" class="btn btn-danger rounded-pill shadow-sm">
-                <i class="bi bi-file-earmark-pdf-fill me-1"></i> Export PDF
+    @if ($booking->count())
+        <form action="{{ route('bookings.riwayat') }}" method="GET" class="row g-2 mb-4">
+            <div class="col-md-4">
+                <select name="ruang_id" class="form-control">
+                    <option value="">-- Pilih Ruangan --</option>
+                    @foreach ($ruangans as $ruangan)
+                        <option value="{{ $ruangan->id }}" {{ request('ruang_id') == $ruangan->id ? 'selected' : '' }}>
+                            {{ $ruangan->nama }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="status" class="form-control">
+                    <option value="">-- Pilih Status --</option>
+                    <option value="Pending" {{ request('status') == 'Pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="Diterima" {{ request('status') == 'Diterima' ? 'selected' : '' }}>Diterima</option>
+                    <option value="Ditolak" {{ request('status') == 'Ditolak' ? 'selected' : '' }}>Ditolak</option>
+                    <option value="Selesai" {{ request('status') == 'Selesai' ? 'selected' : '' }}>Selesai</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="date" name="tanggal" class="form-control" value="{{ request('tanggal') }}">
+            </div>
+            <div class="col-md-2 d-flex gap-2">
+                <button type="submit" class="btn btn-primary w-100">Filter</button>
+                <a href="{{ route('bookings.riwayat') }}" class="btn btn-secondary">Reset</a>
+            </div>
+        </form>
+        <div class="text-end mb-3">
+            <a href="{{ route('bookings.export', [
+                'ruang_id' => request('ruang_id'),
+                'tanggal'  => request('tanggal'),
+                'status'   => request('status'),
+            ]) }}" class="btn btn-danger">
+                <i class="fa fa-file-pdf"></i> Export PDF
             </a>
         </div>
-
         <div class="table-responsive shadow rounded-4">
             <table class="table table-hover align-middle text-center mb-0">
                 <thead class="table-light">
@@ -25,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($booking as $index => $data)
+                    @foreach ($booking as $index => $data)
                         <tr>
                             <td class="text-muted">{{ $index + 1 }}</td>
                             <td class="fw-medium">{{ $data->ruangan->nama }}</td>

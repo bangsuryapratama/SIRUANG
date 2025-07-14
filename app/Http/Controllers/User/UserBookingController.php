@@ -6,12 +6,38 @@ use App\Http\Controllers\Controller;
 use App\Models\bookings;
 use App\Models\jadwals;
 use App\Models\ruangans;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserBookingController extends Controller
 {
+
+        public function export()
+    {
+        $query = Bookings::where('user_id', Auth::id())->with('ruangan');
+
+        if (request()->filled('ruang_id')) {
+            $query->where('ruang_id', request('ruang_id'));
+        }
+
+        if (request()->filled('status')) {
+            $query->where('status', request('status'));
+        }
+
+        if (request()->filled('tanggal')) {
+            $query->whereDate('tanggal', request('tanggal'));
+        }
+
+        $bookings = $query->orderBy('tanggal', 'desc')->get();
+
+        $pdf = Pdf::loadView('riwayat_pdf', ['bookings' => $bookings]);
+        return $pdf->download('riwayat-booking-' . Auth::user()->name . '.pdf');
+    }
+
+
+
     public function create()
     {
        
@@ -42,7 +68,7 @@ class UserBookingController extends Controller
 
         // Cek bentrok dengan jadwal tetap (Jadwal model)
         $tanggal = Carbon::parse($request->tanggal);
-        $hariBooking = $tanggal->locale('id')->isoFormat('dddd'); // contoh: "Senin"
+        $hariBooking = $tanggal->locale('id')->isoFormat('dddd'); 
 
         $jadwalTetaps = jadwals::where('ruang_id', $request->ruang_id)->get();
 

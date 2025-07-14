@@ -7,6 +7,7 @@ use App\Models\Jadwals;
 use App\Models\ruangans;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
@@ -50,12 +51,29 @@ class FrontendController extends Controller
     }
 
 
-     public function riwayat()
+    public function riwayat(Request $request)
     {
-        $booking = bookings::where('user_id', auth::id())->get();
-        // dd($booking);
-        return view('bookings_riwayat', compact('booking'));
+        $query = Bookings::where('user_id', Auth::id())->with('ruangan');
+
+        if ($request->filled('ruang_id')) {
+            $query->where('ruang_id', $request->ruang_id);
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('tanggal')) {
+            $query->whereDate('tanggal', $request->tanggal);
+        }
+
+        $booking = $query->orderBy('tanggal', 'desc')->get();
+        $ruangans = ruangans::orderBy('nama', 'asc')->get();
+
+        return view('bookings_riwayat', compact('booking', 'ruangans'));
     }
+
+
 
 
     public function ruanganIndex()

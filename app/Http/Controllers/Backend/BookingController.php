@@ -20,37 +20,64 @@ class BookingController extends Controller
 
      public function export()
     {
-        
-    $bookings = bookings::all();
+        $filter = bookings::with(['user', 'ruangan']);
 
-    $pdf = Pdf::loadView('backend.bookings.pdfbookings', ['bookings' => $bookings]);
-    return $pdf->download('laporan-data-bookings.pdf');
+        if (request()->filled('ruang_id')) {
+            $filter->where('ruang_id', request('ruang_id'));
+        }
+
+        if (request()->filled('tanggal')) {
+            $filter->where('tanggal', request('tanggal'));
+        }
+
+        if (request()->filled('status')) {
+            $filter->where('status', request('status'));
+        }
+
+        $bookings = $filter->orderBy('tanggal')->get();
+
+        $pdf = Pdf::loadView('backend.bookings.pdfbookings', ['bookings' => $bookings]);
+        return $pdf->download('laporan-data-bookings.pdf');
     }
 
-    public function index(Request $request)
-    {
-        //status otomatis
-        bookings::where(function ($query) {
-            $query->where('tanggal', '<', now()->toDateString())
-                  ->orWhere(function ($q) {
-                      $q->where('tanggal', now()->toDateString())
-                        ->where('jam_selesai', '<', now()->format('H:i:s'));
-                  });
-        })
-        ->where('status', '!=', 'Selesai')
-        ->update(['status' => 'Selesai']);
 
-        //bentrok
-        $bookings = bookings::with(['ruangan', 'user'])
-            ->latest()
-            ->get()
-            ->map(function ($booking) {
-                $booking->tanggal_format = Carbon::parse($booking->tanggal)->translatedFormat('l, j F Y');
-                return $booking;
-            });
+   public function index(Request $request)
+{
+   //update status
+    bookings::where(function ($query) {
+        $query->where('tanggal', '<', now()->toDateString())
+              ->orWhere(function ($q) {
+                  $q->where('tanggal', now()->toDateString())
+                    ->where('jam_selesai', '<', now()->format('H:i:s'));
+              });
+    })
+    ->where('status', '!=', 'Selesai')
+    ->update(['status' => 'Selesai']);
 
-        confirmDelete('Hapus Booking', 'Apakah Anda yakin ingin menghapus booking ini?');
-        return view('backend.bookings.index', compact('bookings'));
+    //mengambil katakunci untuk filter
+    $query = bookings::with(['ruangan', 'user'])->orderBy('tanggal', 'desc');
+
+    if ($request->filled('ruang_id')) {
+        $query->where('ruang_id', $request->ruang_id);
+    }
+
+    if ($request->filled('tanggal')) {
+        $query->whereDate('tanggal', $request->tanggal);
+    }
+
+    if ($request->filled('status')) {
+        $query->where('status', $request->status);
+    }
+
+    // format tgl
+    $bookings = $query->get()->map(function ($booking) {
+        $booking->tanggal_format = Carbon::parse($booking->tanggal)->translatedFormat('l, j F Y');
+        return $booking;
+    });
+
+    $ruangans = ruangans::all();
+
+    return view('backend.bookings.index', compact('bookings', 'ruangans'));
     }
 
     public function create()
