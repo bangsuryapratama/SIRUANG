@@ -59,6 +59,11 @@ class UserBookingController extends Controller
             return back()->withInput();
         }
 
+          // if (Carbon::parse($request->tanggal)->isPast()) {
+        //     toast('Tanggal booking tidak boleh di masa lalu!', 'error');
+        //     return back()->withInput()->with('error', 'Tanggal booking minimal hari ini.');
+        // }
+
         // Bentrok dengan jadwal tetap
         $hariBooking = $tanggal->locale('id')->isoFormat('dddd');
         $jadwalTetaps = jadwals::where('ruang_id', $request->ruang_id)->get();

@@ -28,10 +28,10 @@
                         @foreach ($ruangans as $ruangan)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('storage/'.$ruangan->cover) }}" alt="cover" width="60"></td>
+                            <td><img src="{{ asset('storage/'.$ruangan->cover) }}" alt="cover" width="120"></td>
                             <td>{{ $ruangan->nama }}</td>
                             <td>{{ $ruangan->kapasitas }}</td>
-                            <td>{{ $ruangan->fasilitas }}</td>
+                            <td>{{ \Illuminate\Support\Str::limit($ruangan->fasilitas, 30) }}</td>
                             <td width="120">
                                 <a href="{{ route('backend.ruangan.show', $ruangan->id) }}" class="btn btn-sm btn-info">View</a>
                                 <a href="{{ route('backend.ruangan.edit', $ruangan->id) }}" class="btn btn-sm btn-warning">Edit</a>

@@ -20,7 +20,7 @@
         <div class="card-body p-4">
           <h5 class="fw-bold text-body mb-1">{{ $ruangan->nama }}</h5>
           <p class="text-muted small mb-3">
-            <i class="bi bi-people-fill me-1"></i> Kapasitas: {{ $ruangan->kapasitas }} orang
+            <i class="bi bi-people-fill me-1"></i> Kapasitas: {{ $ruangan->kapasitas }} 
           </p>
 
           <div class="mb-3">

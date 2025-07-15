@@ -25,7 +25,7 @@
           <div class="col-md-6 d-flex align-items-center">
             <div class="card-body p-5">
               <h2 class="fw-bold text-gradient mb-3">{{ $ruangan->nama }}</h2>
-              <p class="text-muted mb-4"><i class="bi bi-people-fill me-2"></i> Kapasitas: <strong>{{ $ruangan->kapasitas }}</strong> orang</p>
+              <p class="text-muted mb-4"><i class="bi bi-people-fill me-2"></i> Kapasitas: <strong>{{ $ruangan->kapasitas }}</strong> </p>
 
               <h5 class="text-secondary mb-3">Fasilitas:</h5>
               <ul class="list-unstyled mb-4">
