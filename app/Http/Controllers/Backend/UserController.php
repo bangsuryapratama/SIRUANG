@@ -35,7 +35,7 @@ class UserController extends Controller
         $user->is_admin = $request->has('is_admin');
         $user->save();
 
-        toast('MADEP', 'success');
+        toast('User berhasil ditambahakan!', 'success');
         return redirect()->route('backend.user.index')->with('success', 'User created successfully.');
     }
 
