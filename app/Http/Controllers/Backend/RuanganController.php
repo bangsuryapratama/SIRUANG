@@ -99,6 +99,12 @@ class RuanganController extends Controller
     public function destroy(string $id)
     {
         $ruangan = ruangans::findOrFail($id);
+        
+        if ($ruangan->bookings()->count() > 0) {
+        toast('Tidak bisa menghapus ruangan karena masih digunakan di data booking.', 'error');
+        return back();
+        }
+
         Storage::disk('public')->delete($ruangan->cover);
         $ruangan->delete();
 

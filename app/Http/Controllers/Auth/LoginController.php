@@ -30,7 +30,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
     if (Auth::user()->is_admin == 1) {
-        return '/admin'; // atau '/admin'
+        return '/admin';
     }
     return '/';
     }
@@ -43,8 +43,6 @@ class LoginController extends Controller
         ->withInput($request->only('email'));
     }
 
-   // di LoginController.php
-
     protected function authenticated(Request $request, $user)
     {
     toast('Login berhasil!', 'success');
@@ -56,7 +54,7 @@ class LoginController extends Controller
         ->first();
 
     if ($recent) {
-        toast("📢 Booking {$recent->ruangan->nama} baru saja {$recent->status}!", 
+        toast("Booking {$recent->ruangan->nama} baru saja {$recent->status}!", 
               $recent->status === 'Diterima' ? 'success' : 'error');
     }
    }
