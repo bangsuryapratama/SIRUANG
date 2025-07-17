@@ -11,7 +11,7 @@ class ruangans extends Model
 
     public function bookings()
     {
-        return $this->hasMany(bookings::class);
+        return $this->hasMany(bookings::class, 'ruang_id');
     }
 
     public function jadwals()

@@ -21,6 +21,7 @@
           @auth
             <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="{{ route('bookings.riwayat') }}">Riwayat</a></li>
           @endauth
+            
         </ul>
 
         <!-- Kanan -->

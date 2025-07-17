@@ -48,6 +48,17 @@ class UserBookingController extends Controller
             'tanggal'     => 'required|date|after_or_equal:today',
             'jam_mulai'   => 'required|date_format:H:i',
             'jam_selesai' => 'required|date_format:H:i|after:jam_mulai',
+        ], [
+            'ruang_id.required'    => 'Ruangan wajib dipilih.',
+            'ruang_id.exists'      => 'Ruangan yang dipilih tidak ditemukan.',
+            'tanggal.required'     => 'Tanggal wajib diisi.',
+            'tanggal.date'         => 'Format tanggal tidak valid.',
+            'tanggal.after_or_equal' => 'Tanggal booking minimal hari ini.',
+            'jam_mulai.required'   => 'Jam mulai wajib diisi.',
+            'jam_mulai.date_format' => 'Format jam mulai tidak valid.',
+            'jam_selesai.required' => 'Jam selesai wajib diisi.',
+            'jam_selesai.date_format' => 'Format jam selesai tidak valid.',
+            'jam_selesai.after'    => 'Jam selesai harus lebih dari jam mulai.',
         ]);
 
         $tanggal = Carbon::parse($request->tanggal);
@@ -59,8 +70,8 @@ class UserBookingController extends Controller
             return back()->withInput();
         }
 
-          if (Carbon::parse($request->tanggal)->isPast()) {
-            toast('Tanggal booking tidak boleh di masa lalu!', 'error');
+        if (Carbon::parse($request->tanggal)->lt(Carbon::today())) {
+            toast('Tanggal booking sudah terlewat!', 'error');
             return back()->withInput()->with('error', 'Tanggal booking minimal hari ini.');
         }
 
@@ -86,11 +97,11 @@ class UserBookingController extends Controller
             ->where('tanggal', $request->tanggal)
             ->where(function ($query) use ($request) {
                 $query->whereBetween('jam_mulai', [$request->jam_mulai, $request->jam_selesai])
-                      ->orWhereBetween('jam_selesai', [$request->jam_mulai, $request->jam_selesai])
-                      ->orWhere(function ($q) use ($request) {
-                          $q->where('jam_mulai', '<=', $request->jam_mulai)
+                    ->orWhereBetween('jam_selesai', [$request->jam_mulai, $request->jam_selesai])
+                    ->orWhere(function ($q) use ($request) {
+                        $q->where('jam_mulai', '<=', $request->jam_mulai)
                             ->where('jam_selesai', '>=', $request->jam_selesai);
-                      });
+                    });
             })
             ->exists();
 
