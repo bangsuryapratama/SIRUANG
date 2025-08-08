@@ -252,6 +252,10 @@
               </div>
             </div>
           </nav>
+
+          <td>
+            <a href="ini buat link"> ini nama </a>
+          </td>
           <!-- ---------------------------------- -->
           <!-- End Vertical Layout Header -->
           <!-- ---------------------------------- -->

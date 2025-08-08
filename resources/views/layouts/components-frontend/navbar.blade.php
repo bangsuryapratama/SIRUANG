@@ -1,3 +1,5 @@
+@extends('layouts.frontend')
+
 <!-- ======= Header =======-->
 <header class="fbs__net-navbar navbar navbar-expand-lg dark" aria-label="freebootstrap.net navbar">
     <div class="container d-flex align-items-center justify-content-between">
@@ -73,27 +75,33 @@
         </div>
         <!-- End offcanvas-->
 
-        <div class="ms-auto w-auto">
-            <div class="header-social d-flex align-items-center gap-1">
-                <a class="btn btn-primary py-2" href="#">Get Started</a>
-                <button class="fbs__net-navbar-toggler justify-content-center align-items-center ms-auto"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#fbs__net-navbars"
-                        aria-controls="fbs__net-navbars"
-                        aria-label="Toggle navigation"
-                        aria-expanded="false">
-                    <svg class="fbs__net-icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="21" x2="3" y1="6" y2="6"></line>
-                        <line x1="15" x2="3" y1="12" y2="12"></line>
-                        <line x1="17" x2="3" y1="18" y2="18"></line>
-                    </svg>
-                    <svg class="fbs__net-icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6 6 18"></path>
-                        <path d="m6 6 12 12"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
+        <!-- Start Dropdown User -->
+       <!-- Start Dropdown User -->
+        <div class="dropdown ms-3">
+            <a class="btn  btn-light dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle me-2 "></i>
+                {{ Auth::check() ? Auth::user()->name : 'Akun' }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                @if(Auth::check())
+                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+        @else
+            <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+            <li><a class="dropdown-item" href="{{ route('register') }}">Daftar</a></li>
+        @endif
+    </ul>
+</div>
+<!-- End Dropdown User -->
+
 </header>
 <!-- End Header-->

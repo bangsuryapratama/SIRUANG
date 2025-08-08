@@ -6,15 +6,32 @@ use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
 Route::get('/', function () {
-    return view('welcome');
+    if (!Auth::check()) {
+        return redirect()->route('login');
+    }
+
+    if (Auth::user()->isAdmin == 1) {
+        return redirect()->route('admin');
+    }
+
+    Route::get('/', function () {
+    if (!Auth::check()) {
+        return redirect()->route('login');
+    }
+ 
+});
+
+
+    return redirect()->route('welcome');
 });
 
 Route::get('/', [FrontendController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 
 
 
