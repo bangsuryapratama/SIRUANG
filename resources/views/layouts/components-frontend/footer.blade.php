@@ -1,47 +1,104 @@
-<footer class=" bg-dark text-light text-white mt-5 pt-5 pb-3">
-  <div class="container">
-    <div class="row mb-4">
-      <div class="col-md-4">
-        <h5 class="fw-bold mb-3  text-white">Tentang SIRUANG</h5>
-        <p class="text-muted  text-white">
-          SIRUANG adalah sistem penjadwalan ruangan kelas dan laboratorium secara digital. Didesain agar bebas bentrok dan efisien digunakan oleh seluruh civitas akademika.
-        </p>
-      </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIRUANG Footer - Simple</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #f8f9fa;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+        }
+        
+        .footer h5 {
+            color: #ecf0f1;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer p {
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+        
+        .footer-link {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: #3498db;
+        }
+        
+        .social-link {
+            color: #bdc3c7;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            color: #3498db;
+            transform: translateY(-2px);
+        }
+        
+        .footer-bottom {
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo content -->
+    <div class="container py-5">
+        <h1 class="text-center">SIRUANG System</h1>
+        <p class="text-center text-muted">Sistem Penjadwalan Ruangan Kelas dan Lab</p>
+    </div>
 
-      <div class="col-md-4">
-        <h5 class="fw-bold mb-3  text-white">Navigasi</h5>
-        <ul class="list-unstyled text-muted">
-          <li><a href="{{ route('bookings.create') }}" class="text-white text-decoration-none">Booking Ruangan</a></li>
-          <li><a href="{{ route('ruangan') }}" class="text-white text-decoration-none">Daftar Ruangan</a></li>
-          <li><a href="{{ route('login') }}" class="text-white text-decoration-none">Login Admin</a></li>
-        </ul>
-      </div>
+    <!-- Simple Footer -->
+    <footer class="footer mt-5 pt-5 pb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SIRUANG</h5>
+                    <p>Sistem penjadwalan ruangan kelas dan laboratorium secara digital. Bebas bentrok dan efisien.</p>
+                </div>
 
-      <div class="col-md-4">
-        <h5 class="fw-bold mb-3  text-white">Ikuti Kami</h5>
-        <div class="d-flex gap-3">
-          <a href="#" class="text-white fs-5" data-bs-toggle="tooltip" data-bs-title="Facebook">
-            <i class="bi bi-facebook"></i>
-          </a>
-          <a href="#" class="text-white fs-5" data-bs-toggle="tooltip" data-bs-title="Twitter">
-            <i class="bi bi-twitter"></i>
-          </a>
-          <a href="#" class="text-white fs-5" data-bs-toggle="tooltip" data-bs-title="Instagram">
-            <i class="bi bi-instagram"></i>
-          </a>
+                <div class="col-md-4">
+                    <h5>Menu</h5>
+                    <a href="#" class="footer-link">Booking Ruangan</a>
+                    <a href="#" class="footer-link">Daftar Ruangan</a>
+                    <a href="#" class="footer-link">Login Admin</a>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Ikuti Kami</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 pt-3">
+                <div class="d-flex flex-md-row justify-content-between align-items-center">
+                    <small>&copy; 2024 SIRUANG. All rights reserved.</small>
+                    <small>Dibuat oleh Surya Pratama & Team</small>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-
-    <hr class="border-light">
-
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-muted">
-      <div>
-        <small>&copy; {{ date('Y') }} SIRUANG. All rights reserved.</small>
-      </div>
-      <div>
-        <small>Dibuat Oleh Surya Pratama and TEAM</small>
-      </div>
-    </div>
-  </div>
-</footer>
+    </footer>
+</body>
+</html>
